@@ -1,12 +1,14 @@
 import axios from "axios";
 import React from "react";
-import { Navigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 export const authContext = React.createContext();
 
 export function AuthContextProvider({ children }) {
   const [isAuth, setIsauth] = React.useState(false);
   const [token, setToken] = React.useState("Login First To Get Token");
+
+  const navigate = useNavigate();
 
   const handleLogin = (email, pass) => {
     console.log("hii");
@@ -23,7 +25,7 @@ export function AuthContextProvider({ children }) {
         setIsauth(true);
         setToken(res.data.token);
 
-        return <Navigate to= "/"/>
+        navigate("/");
       })
       .catch((err) => {
         console.log(err);

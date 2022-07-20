@@ -17,6 +17,11 @@ export const Github = () => {
     
 
     const handleSearch = () => {
+        
+        if(text === ""){
+            alert("Please Provide User Name");
+            return;
+        }
         dispatch(getUserLoading());
         axios.get(`https://api.github.com/search/users?q=${text}`).then((res) => {
             if (res.data.total_count === 0) {

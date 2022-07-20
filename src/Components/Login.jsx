@@ -1,13 +1,14 @@
 import { Button, TextField } from '@mui/material';
 import React from 'react'
 import {authContext} from "../Context/AuthContext";
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 
 export default function Login() {
     const {handleLogin , isAuth} = React.useContext(authContext);
     const [email,setEmail] = React.useState("");
     const [pass,setPass] = React.useState("");
     console.log(isAuth);
+
   return (
     <>
       <div style={{margin: "auto", marginTop:"20px", width:"30%", textAlign: "center"}}>

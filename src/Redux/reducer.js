@@ -35,7 +35,8 @@ export const reducer = (state = initialState, action) =>{
             users:{
                 ...state.users,
                 data: action.payload,
-                loading: false
+                loading: false,
+                error: false
             }
         }
     default:
