@@ -1,12 +1,20 @@
 import axios from 'axios';
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
+import { authContext } from '../Context/AuthContext';
 import { getUserError, getUserLoading, getUserSuccess } from '../Redux/actions';
+import { Navigate } from "react-router-dom";
 
 export const Github = () => {
     const dispatch = useDispatch();
     const { loading, error, data } = useSelector(state => state.users);
     const [text, setText] = useState("");
+    const {isAuth} = React.useContext(authContext);
+
+    if(!isAuth){
+       return <Navigate to="/login" />
+    }
+    
 
     const handleSearch = () => {
         dispatch(getUserLoading());
